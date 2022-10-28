@@ -1,15 +1,14 @@
-#ifndef RECURSO_H
-#define RECURSO_H
+#ifndef LOCALIDAD_H
+#define LOCALIDAD_H
 
-struct Recurso{
+struct Localidad{
 
     float x;
     float y;
     float z;
 
-    int id;
-    int tipo;
-
+    int conapo_id;
+   
     int estado_id;
     int municipio_id;
     int localidad_id;

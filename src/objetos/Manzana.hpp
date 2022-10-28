@@ -6,13 +6,14 @@
 
 using std::string;
 
-class Manzana{
+struct Manzana{
 
     string mid;
     long pob;
 
-    float cx;
-    float cy;
+    float x;
+    float y;
+    float z;
 
 };
 
