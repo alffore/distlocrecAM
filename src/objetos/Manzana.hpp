@@ -15,6 +15,9 @@ struct Manzana{
     float y;
     float z;
 
+    int estado_id;
+    int municipio_id;
+    int localidad_id;
 };
 
 

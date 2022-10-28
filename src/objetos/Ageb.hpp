@@ -1,4 +1,3 @@
-
 #ifndef AGEB_H
 #define AGEB_H
 
@@ -12,8 +11,9 @@ struct Ageb{
     string aid;
     long pob;
 
-    float cx;
-    float cy;
+    float x;
+    float y;
+    float z;
 };
 
 #endif
