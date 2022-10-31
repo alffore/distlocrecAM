@@ -15,7 +15,7 @@ CCG2CCL::CCG2CCL(string sproyec1, string sproyec2):sproyec1(sproyec1),sproyec2(s
     P = proj_create_crs_to_crs(C,sproyec1.c_str(),sproyec2.c_str(),NULL);
 
     if(P==0){
-        cerr<<" Error en la creacion del objeto para la transformacion"<<endl;
+        cerr<<" Error en la creación del objeto para la transformacion"<<endl;
     }
 
     norm = proj_normalize_for_visualization(C,P);
@@ -38,10 +38,34 @@ CCG2CCL::~CCG2CCL() {
 
 }
 
-void CCG2CCL::convierte(double lon , double lat, double& este, double& norte) {
+/**
+ * @brief 
+ * 
+ * @param lon 
+ * @param lat 
+ * @param este 
+ * @param norte 
+ */
+void CCG2CCL::convierte(double& lon , double& lat, double& este, double& norte) {
    PJ_COORD a = proj_coord(lon, lat, 0,0);
    PJ_COORD b = proj_trans(P,PJ_FWD,a);
 
    este = b.enu.e;
    norte= b.enu.n;
+}
+
+/**
+ * @brief 
+ * 
+ * @param lon 
+ * @param lat 
+ * @param este 
+ * @param norte 
+ */
+void CCG2CCL::invierte(double& lon , double& lat, double& este, double& norte) {
+   PJ_COORD a = proj_coord(este,norte,0,0);
+   PJ_COORD b = proj_trans(P,PJ_INV,a);
+
+   lon = b.lp.lam;
+   lat = b.lp.phi;
 }

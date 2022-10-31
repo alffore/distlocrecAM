@@ -28,7 +28,8 @@ public:
 
 
 
-    void convierte(double lon, double lat, double&este, double& norte);
+    void convierte(double& lon, double& lat, double&este, double& norte);
+    void invierte(double& lon, double& lat, double& este, double& norte);
 };
 
 

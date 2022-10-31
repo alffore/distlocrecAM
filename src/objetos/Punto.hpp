@@ -3,8 +3,8 @@
 #define PUNTO_H
 
 struct Punto{
-    float x;
-    float y;
+    double x;
+    double y;
 };
 
 #endif

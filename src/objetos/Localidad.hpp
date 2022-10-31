@@ -1,13 +1,18 @@
-#ifndef LOCALIDAD_H
-#define LOCALIDAD_H
+#ifndef LOCALIDAD_HPP
+#define LOCALIDAD_HPP
 
 struct Localidad{
 
-    float x;
-    float y;
-    float z;
+    double lon;
+    double lat;
 
-    int conapo_id;
+    double x;
+    double y;
+    double z;
+
+    long conapo_id;
+
+    double pob;
    
     int estado_id;
     int municipio_id;

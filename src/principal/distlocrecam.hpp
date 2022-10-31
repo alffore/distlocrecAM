@@ -7,5 +7,9 @@
 #include "../objetos/Punto.hpp"
 #include "../objetos/Recurso.hpp"
 
+#include "../lectores/LectorRec.hpp"
+#include "../lectores/LectorLoc.hpp"
+#include "../lectores/LectorMNZ.hpp"
+
 
 #endif
