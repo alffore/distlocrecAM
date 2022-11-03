@@ -12,7 +12,6 @@ public:
     
     void parser(string scad) override;
 
-
 private:
     vector<Manzana>& vMnz;
     

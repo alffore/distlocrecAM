@@ -46,5 +46,7 @@ void LectorMNZ::parser(string scad) {
     mnz.sageb_id = vc[7];
     mnz.smanzana_id = vc[8];
 
+    mnz.pob = -1;
+
     vMnz.push_back(mnz);
 }

@@ -1,6 +1,10 @@
 #ifndef LOCALIDAD_HPP
 #define LOCALIDAD_HPP
 
+#include <vector>
+
+using namespace std;
+
 struct Localidad{
 
     double lon;
@@ -17,6 +21,9 @@ struct Localidad{
     int estado_id;
     int municipio_id;
     int localidad_id;
+
+    vector<size_t> vidrec;
+    vector<double> vdist;
 };
 
 #endif

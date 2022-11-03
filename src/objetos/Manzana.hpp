@@ -1,5 +1,5 @@
-#ifndef MANZANA_H
-#define MANZANA_H
+#ifndef MANZANA_HPP
+#define MANZANA_HPP
 
 #include <string>
 

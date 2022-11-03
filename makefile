@@ -1,4 +1,4 @@
-CC= g++ -c 
+CC= g++ -std=c++17 -c 
 
 CLINKER = g++ -o 
 
@@ -8,7 +8,7 @@ DIR_SRC=./src/
 DIR_OBJ=./obj/
 DIR_BIN=./bin/
 
-all: clean main lectores coordenadas salidas 
+all: clean main lectores coordenadas salidas algoritmo
 	$(CLINKER) $(DIR_BIN)distlocrecam.exe $(DIR_OBJ)*.o $(FLAGS)
 
 main:
@@ -23,7 +23,10 @@ coordenadas:
 	$(CC) $(DIR_SRC)coordenadas/*.cpp 
 	@mv *.o $(DIR_OBJ)
 
-
+algoritmo:
+	$(CC) $(DIR_SRC)algoritmo/*.cpp 
+	@mv *.o $(DIR_OBJ)
+	
 salidas:
 	$(CC) $(DIR_SRC)salidas/*.cpp 
 	@mv *.o $(DIR_OBJ)
