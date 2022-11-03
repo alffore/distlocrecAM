@@ -24,7 +24,7 @@ string sarchivo_mnz_dato = "/home/alfonso/devel/renic/renic.git/utiles/cac8/dato
 
 
 extern void generaRedLocalidad(size_t id);
-
+extern void generaRedManzana(size_t id);
 
 
 /**
@@ -40,6 +40,7 @@ void cargadores(){
 
     Convierte2Dto3D c2to3;
 
+    cout << "Incia carga ..."<<endl;
 
     LectorRec lecrec(sarchivo_recs," ",vRec,c2to3);
     lecrec.inicia();
@@ -59,7 +60,7 @@ void cargadores(){
     LectorMNZDato lecmnzd(sarchivo_mnz_dato," ",vMnz);
     lecmnzd.inicia();
     
-
+    cout << "Finaliza carga ..."<<endl;
 }
 
 /**
@@ -79,6 +80,7 @@ int main() {
 
     cargadores();
 
+    cout<< "Comienza el calculo de localidades ..."<<endl;
     vector<thread> vthreads;
     for (size_t i=0;i<NUM_HILOS;i++){
         vthreads.emplace_back(generaRedLocalidad,i);
@@ -94,7 +96,17 @@ int main() {
 
     sal.imprimeSalidaLoc("./resultados/locrec.txt",vLoc,vRec);
 
+    cout<< "Comienza el calculo de manzanas ..."<<endl;
+    
+    for (size_t i=0;i<NUM_HILOS;i++){
+        vthreads.emplace_back(generaRedManzana,i);
+    }
 
+    for (auto &th: vthreads) {
+        th.join();
+    }
+
+    vthreads.clear();
 
     return 0;
 }

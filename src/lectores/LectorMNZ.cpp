@@ -4,6 +4,8 @@
 
 #include "LectorMNZ.hpp"
 
+#define CANT_TIPOREC 25
+
 /**
  *
  * @param scad
@@ -47,6 +49,11 @@ void LectorMNZ::parser(string scad) {
     mnz.smanzana_id = vc[8];
 
     mnz.pob = -1;
+
+    for(size_t i=0;i<CANT_TIPOREC;i++){
+        mnz.vdist.push_back(4);
+        mnz.vidrec.push_back(1E6);
+    }
 
     vMnz.push_back(mnz);
 }

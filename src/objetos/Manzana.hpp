@@ -27,6 +27,9 @@ struct Manzana{
     string slocalidad_id;
     string sageb_id;
     string smanzana_id;
+
+    vector<size_t> vidrec;
+    vector<double> vdist;
 };
 
 
