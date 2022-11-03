@@ -41,6 +41,8 @@ void LectorMNZ::parser(string scad) {
     mnz.municipio_id = atoi(vc[5].c_str());
     mnz.localidad_id = atoi(vc[6].c_str());
 
+    mnz.conapo_id=(mnz.estado_id*1000+mnz.municipio_id)*10000+mnz.localidad_id;
+
     mnz.mid = vc[3];
     mnz.sestado_id = vc[4];
     mnz.smunicipio_id = vc[5];

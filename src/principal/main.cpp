@@ -10,6 +10,7 @@ vector<Recurso> vRec;
 vector<Localidad> vLoc;
 vector<Manzana> vMnz;
 //vector<Ageb> vAgeb;
+vector<LocalidadC> vCorr;
 
 size_t tamRec;
 size_t tamLoc;

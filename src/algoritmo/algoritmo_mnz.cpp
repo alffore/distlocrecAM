@@ -5,6 +5,7 @@ extern unsigned int NUM_HILOS;
 extern vector<Recurso> vRec;
 extern vector<Localidad> vLoc;
 extern vector<Manzana> vMnz;
+extern vector<LocalidadC> vCorr;
 
 extern size_t tamRec;
 extern size_t tamLoc;
@@ -48,3 +49,23 @@ void generaRedManzana(size_t id){
 }
 
 
+void calculaCorreccion(size_t id){
+
+    for(size_t i=id;i<tamLoc;i+=NUM_HILOS){
+        LocalidadC loc_corr;
+        loc_corr.conapo_id = vLoc[i].conapo_id;
+        loc_corr.sumpob=0;
+
+        for(size_t k=0;k<CANT_TIPOREC;k++){
+            loc_corr.vdist.push_back(0);        
+        }
+
+        for(auto &mnz: vMnz){
+            if(mnz.conapo_id == vLoc[i].conapo_id){
+                for(size_t j=0; j<CANT_TIPOREC;j++){
+                    loc_corr.vdist[j]+=mnz.vdist[j]*mnz.pob;
+                }
+            }
+        }
+    }
+}

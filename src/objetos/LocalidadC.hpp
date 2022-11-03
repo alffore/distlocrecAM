@@ -7,6 +7,8 @@ using namespace std;
 
 struct LocalidadC{
     long conapo_id;
+    
+    double sumpob;
 
     vector<double> vdist;
 };

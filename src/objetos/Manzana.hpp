@@ -22,6 +22,8 @@ struct Manzana{
     int municipio_id;
     int localidad_id;
 
+    long conapo_id;
+
     string sestado_id;
     string smunicipio_id;
     string slocalidad_id;
