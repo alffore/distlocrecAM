@@ -19,7 +19,7 @@ extern size_t tamMnz;
  * @return double 
  */
 double distanciaMnzRec(Manzana mnz,Recurso rec){
-     double res=mnz.x*rec.x + mnz.y*rec.y + mnz.z*rec.z;
+     double res = mnz.x*rec.x + mnz.y*rec.y + mnz.z*rec.z;
 
     res=(res<-1.0)?-1.0:res;
     res=(res>1.0)?1.0:res;
@@ -34,7 +34,7 @@ double distanciaMnzRec(Manzana mnz,Recurso rec){
  */
 void generaRedManzana(size_t id){
     double daux;
-    for(size_t j=0;j<tamRec;j++){
+    for(size_t j=0; j<tamRec; j++){
         int tipo_id = vRec[j].tipo_id;
 
         for(size_t i=id;i<tamMnz;i+=NUM_HILOS){
@@ -65,16 +65,16 @@ void calculaCorreccion(size_t id){
 
         for(auto &mnz: vMnz){
             if(mnz.conapo_id == vLoc[i].conapo_id){
-                loc_corr.sumpob+=mnz.pob;
+                loc_corr.sumpob += mnz.pob;
                 for(size_t j=0; j<CANT_TIPOREC; j++){
-                    loc_corr.vdist[j]+=mnz.vdist[j]*mnz.pob;                    
+                    loc_corr.vdist[j] += mnz.vdist[j]*mnz.pob;                    
                 }
             }
         }
 
         if(loc_corr.sumpob > 0){
             for(size_t j=0; j<CANT_TIPOREC; j++){
-                loc_corr.vdist[j]/=loc_corr.sumpob;
+                loc_corr.vdist[j] /= loc_corr.sumpob;
             }
             vCorr.push_back(loc_corr);
         }        
