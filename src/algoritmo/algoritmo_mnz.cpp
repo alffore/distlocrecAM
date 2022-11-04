@@ -48,7 +48,10 @@ void generaRedManzana(size_t id){
     }
 }
 
-
+/**
+ * 
+ * 
+*/
 void calculaCorreccion(size_t id){
 
     for(size_t i=id;i<tamLoc;i+=NUM_HILOS){
@@ -62,10 +65,19 @@ void calculaCorreccion(size_t id){
 
         for(auto &mnz: vMnz){
             if(mnz.conapo_id == vLoc[i].conapo_id){
-                for(size_t j=0; j<CANT_TIPOREC;j++){
-                    loc_corr.vdist[j]+=mnz.vdist[j]*mnz.pob;
+                loc_corr.sumpob+=mnz.pob;
+                for(size_t j=0; j<CANT_TIPOREC; j++){
+                    loc_corr.vdist[j]+=mnz.vdist[j]*mnz.pob;                    
                 }
             }
         }
+
+        if(loc_corr.sumpob > 0){
+            for(size_t j=0; j<CANT_TIPOREC; j++){
+                loc_corr.vdist[j]/=loc_corr.sumpob;
+            }
+            vCorr.push_back(loc_corr);
+        }        
     }
+
 }
