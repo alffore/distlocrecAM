@@ -26,6 +26,7 @@ string sarchivo_mnz_dato = "/home/alfonso/devel/renic/renic.git/utiles/cac8/dato
 
 extern void generaRedLocalidad(size_t id);
 extern void generaRedManzana(size_t id);
+extern void calculaCorreccion(size_t id);
 
 
 /**
@@ -108,6 +109,20 @@ int main() {
     }
 
     vthreads.clear();
+
+    cout<< "Cálculo de correcciones ..."<<endl;
+
+    for (size_t i=0;i<NUM_HILOS;i++){
+        vthreads.emplace_back(calculaCorreccion,i);
+    }
+
+    for (auto &th: vthreads) {
+        th.join();
+    }
+
+    vthreads.clear();
+
+    sal.imprimeSalidaLoc("./resultados/locrec2.txt",vLoc,vRec);
 
     return 0;
 }

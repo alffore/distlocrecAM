@@ -21,4 +21,9 @@ void Salida::imprimeSalidaLoc(string sarchivo,vector<Localidad> &vLoc, vector<Re
         }
         
     }
+
+    ofs.close();
 }
+
+
+

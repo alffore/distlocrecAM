@@ -37,21 +37,25 @@ void generaRedManzana(size_t id){
     for(size_t j=0; j<tamRec; j++){
         int tipo_id = vRec[j].tipo_id;
 
-        for(size_t i=id;i<tamMnz;i+=NUM_HILOS){
+        for(size_t i=id; i<tamMnz; i+=NUM_HILOS){
+            
             daux = distanciaMnzRec(vMnz[i],vRec[j]);
+
             if(vMnz[i].vdist[tipo_id] > daux){
                 vMnz[i].vdist[tipo_id] = daux;
                 vMnz[i].vidrec[tipo_id] = j;
             }        
+
         }
 
     }
 }
 
 /**
+ * @brief 
  * 
- * 
-*/
+ * @param id 
+ */
 void calculaCorreccion(size_t id){
 
     for(size_t i=id;i<tamLoc;i+=NUM_HILOS){
@@ -60,7 +64,7 @@ void calculaCorreccion(size_t id){
         loc_corr.sumpob=0;
 
         for(size_t k=0;k<CANT_TIPOREC;k++){
-            loc_corr.vdist.push_back(0);        
+            loc_corr.vdist.push_back(0);                    
         }
 
         for(auto &mnz: vMnz){
@@ -75,9 +79,12 @@ void calculaCorreccion(size_t id){
         if(loc_corr.sumpob > 0){
             for(size_t j=0; j<CANT_TIPOREC; j++){
                 loc_corr.vdist[j] /= loc_corr.sumpob;
+                vLoc[i].vdist[j]=loc_corr.vdist[j];
             }
             vCorr.push_back(loc_corr);
         }        
     }
 
 }
+
+

@@ -11,6 +11,7 @@ struct LocalidadC{
     double sumpob;
 
     vector<double> vdist;
+    
 };
 
 

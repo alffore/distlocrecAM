@@ -11,7 +11,7 @@ public:
 
     void imprimeSalidaLoc(string sarchivo,vector<Localidad> &vLoc, vector<Recurso> &vRec);
 
-    void imprimeSalidaLocMnz(string sarchivo,vector<Localidad> &vLoc, vector<Recurso> &vRec);
+
 };
 
 
