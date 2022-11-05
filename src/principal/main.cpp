@@ -9,12 +9,14 @@ unsigned int NUM_HILOS = 8;
 vector<Recurso> vRec;
 vector<Localidad> vLoc;
 vector<Manzana> vMnz;
+vector<ManzanaDato> vMnzD;
 //vector<Ageb> vAgeb;
 vector<LocalidadC> vCorr;
 
 size_t tamRec;
 size_t tamLoc;
 size_t tamMnz;
+size_t tamMnzD;
 
 
 string sarchivo_locs = "/home/alfonso/devel/renic/renic.git/utiles/cac2/localidades2020_final.txt";
@@ -27,6 +29,7 @@ string sarchivo_mnz_dato = "/home/alfonso/devel/renic/renic.git/utiles/cac8/dato
 extern void generaRedLocalidad(size_t id);
 extern void generaRedManzana(size_t id);
 extern void calculaCorreccion(size_t id);
+extern void recuperaPobMnz(int id);
 
 
 /**
@@ -59,8 +62,10 @@ void cargadores(){
     tamMnz = vMnz.size();
     cout << "Manzanas: "<< tamMnz<<endl;
 
-    LectorMNZDato lecmnzd(sarchivo_mnz_dato," ",vMnz);
+    LectorMNZDato lecmnzd(sarchivo_mnz_dato," ",vMnzD);
     lecmnzd.inicia();
+    tamMnzD = vMnzD.size();
+    cout << "Manzanas datos: "<< tamMnzD <<endl;
     
     cout << "Finaliza carga ..."<<endl;
 }
@@ -98,8 +103,22 @@ int main() {
 
     sal.imprimeSalidaLoc("./resultados/locrec.txt",vLoc,vRec);
 
+
+
+
     cout<< "Comienza el calculo de manzanas ..."<<endl;
     
+    for (size_t i=0;i<NUM_HILOS;i++){
+        vthreads.emplace_back(recuperaPobMnz,i);
+    }
+
+    for (auto &th: vthreads) {
+        th.join();
+    }
+
+    vthreads.clear();
+
+
     for (size_t i=0;i<NUM_HILOS;i++){
         vthreads.emplace_back(generaRedManzana,i);
     }
@@ -109,6 +128,8 @@ int main() {
     }
 
     vthreads.clear();
+
+
 
     cout<< "Cálculo de correcciones ..."<<endl;
 

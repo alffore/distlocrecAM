@@ -5,11 +5,38 @@ extern unsigned int NUM_HILOS;
 extern vector<Recurso> vRec;
 extern vector<Localidad> vLoc;
 extern vector<Manzana> vMnz;
+extern vector<ManzanaDato> vMnzD;
 extern vector<LocalidadC> vCorr;
 
 extern size_t tamRec;
 extern size_t tamLoc;
 extern size_t tamMnz;
+extern size_t tamMnzD;
+
+
+/**
+ * @brief 
+ * 
+ * @param id 
+ */
+void recuperaPobMnz(int id){
+
+    for(size_t i=id;i<tamMnz;i+=NUM_HILOS){
+        Manzana &mnz = vMnz[i];
+        for(size_t j = 0 ; j<tamMnzD;j++){
+            ManzanaDato &mnzd = vMnzD[j];
+            if(mnz.conapo_id == mnzd.conapo_id){
+                mnz.pob = mnzd.pob;
+                break;
+            }
+        }
+
+        if(i%10000==0){
+            cout <<"Avance Población -> Mnz: "<<(double)i*100.00/(double)tamMnz<<"% "<<endl;
+        }
+    }
+}
+
 
 /**
  * @brief 
@@ -19,7 +46,7 @@ extern size_t tamMnz;
  * @return double 
  */
 double distanciaMnzRec(Manzana mnz,Recurso rec){
-     double res = mnz.x*rec.x + mnz.y*rec.y + mnz.z*rec.z;
+    double res = mnz.x*rec.x + mnz.y*rec.y + mnz.z*rec.z;
 
     res=(res<-1.0)?-1.0:res;
     res=(res>1.0)?1.0:res;
@@ -79,7 +106,7 @@ void calculaCorreccion(size_t id){
         if(loc_corr.sumpob > 0){
             for(size_t j=0; j<CANT_TIPOREC; j++){
                 loc_corr.vdist[j] /= loc_corr.sumpob;
-                vLoc[i].vdist[j]=loc_corr.vdist[j];
+                vLoc[i].vdist[j] = loc_corr.vdist[j];
             }
             vCorr.push_back(loc_corr);
         }        

@@ -2,18 +2,18 @@
 #define LECTORMNZDATO_HPP
 
 #include "LectorINT.hpp"
-#include "../objetos/Manzana.hpp"
+#include "../objetos/ManzanaDato.hpp"
 
 class LectorMNZDato: public LectorINT{
 
 public:
 
-    LectorMNZDato(string& sarchivo, string sep, vector<Manzana>& vMnz): LectorINT(sarchivo, sep), vMnz(vMnz){}
+    LectorMNZDato(string& sarchivo, string sep, vector<ManzanaDato>& vMnzD): LectorINT(sarchivo, sep), vMnzD(vMnzD){}
     
     void parser(string scad) override;
 
 private:
-    vector<Manzana>& vMnz;
+    vector<ManzanaDato>& vMnzD;
     
 };
 

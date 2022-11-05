@@ -10,21 +10,25 @@ void LectorMNZDato::parser(string scad) {
 
     split(vc, scad, sep);
 
-    int e = atoi(vc[0].c_str());
-    int m = atoi(vc[1].c_str());
-    int l = atoi(vc[2].c_str());
+    ManzanaDato mnzd;
 
-    for(auto &mnz: vMnz){
-        if(mnz.pob<0 && mnz.localidad_id == l && mnz.municipio_id == m 
-        && mnz.estado_id == e         
-        &&  mnz.sageb_id == vc[3] && mnz.smanzana_id == vc[4]){
+    mnzd.sestado_id=vc[0];
+    mnzd.smunicipio_id=vc[1];
+    mnzd.slocalidad_id=vc[2];
 
-            mnz.pob = atol(vc[5].c_str());
-            if(mnz.pob == 0){
-                mnz.pob = 1;
-            }
-            return;
-            
-        }
-    }
+    mnzd.estado_id = atoi(vc[0].c_str());
+    mnzd.municipio_id= atoi(vc[1].c_str());
+    mnzd.localidad_id= atoi(vc[2].c_str());
+
+    mnzd.conapo_id=(mnzd.estado_id*1000+mnzd.municipio_id)*10000+mnzd.localidad_id;
+
+    mnzd.sageb_id=vc[3];
+    mnzd.smanzana_id=vc[4];
+
+    mnzd.manazana_id=atoi(vc[4].c_str());
+
+    mnzd.pob= atol(vc[5].c_str());
+
+    vMnzD.push_back(mnzd);
+
 }

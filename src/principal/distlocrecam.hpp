@@ -11,6 +11,7 @@
 #include "../objetos/Localidad.hpp"
 #include "../objetos/LocalidadC.hpp"
 #include "../objetos/Manzana.hpp"
+#include "../objetos/ManzanaDato.hpp"
 #include "../objetos/Punto.hpp"
 #include "../objetos/Recurso.hpp"
 
