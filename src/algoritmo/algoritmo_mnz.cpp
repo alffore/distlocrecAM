@@ -73,6 +73,9 @@ void generaRedManzana(size_t id){
                 vMnz[i].vidrec[tipo_id] = j;
             }        
 
+            if(i*j%(tamRec*tamMnz/1000)==0){
+                cout << "Avance manzana: "<<(double)i*j*100.00/((double)tamRec*tamMnz)<<endl;
+            }
         }
 
     }
@@ -108,8 +111,12 @@ void calculaCorreccion(size_t id){
                 loc_corr.vdist[j] /= loc_corr.sumpob;
                 vLoc[i].vdist[j] = loc_corr.vdist[j];
             }
-            vCorr.push_back(loc_corr);
-        }        
+            //vCorr.push_back(loc_corr);
+        }  
+
+        if(i%1000==0){
+            cout << "Avance corrección: "<<(double)i*100.00/(double)tamLoc<<"% "<<endl;
+        }      
     }
 
 }
