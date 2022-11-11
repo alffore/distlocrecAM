@@ -35,4 +35,5 @@
 ./resultados/*
 ./resultados
 locrec.txt
+locrec2.txt
 .vscode/c_cpp_properties.json
