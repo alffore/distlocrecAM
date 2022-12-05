@@ -65,7 +65,8 @@ void LectorINT::creaPoligono(string scad, vector<Punto>& vpuntos) {
 
     for(auto iter = vc.begin();iter<vc.end(); iter +=2){
         Punto p;
-        //(atof(iter->c_str()),atof((iter+1)->c_str()));
+        p.x=atof(iter->c_str());
+        p.y=atof((iter+1)->c_str());
         vpuntos.push_back(p);
     }
 }

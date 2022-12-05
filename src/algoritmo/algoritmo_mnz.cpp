@@ -110,8 +110,7 @@ void calculaCorreccion(size_t id){
             for(size_t j=0; j<CANT_TIPOREC; j++){
                 loc_corr.vdist[j] /= loc_corr.sumpob;
                 vLoc[i].vdist[j] = loc_corr.vdist[j];
-            }
-            //vCorr.push_back(loc_corr);
+            }            
         }  
 
         if(i%1000==0){
